@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bangalore House Price Prediction</title>
+    <!-- Bootstrap CSS (Optionally required for form layout styling) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center header-title">
+                <h1>Bangalore House Price Prediction</h1>
+            </div>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="/predict" id="predictionForm">
+                
+                <!-- Location Input -->
+                <div class="form-group mb-3">
+                    <label for="location">Select Location</label>
+                    <select class="form-control" id="location" name="location" required>
+                        <option value="">Select Location</option>
+                        {% for location in locations %}
+                            <option value="{{ location }}">{{ location }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- BHK Input -->
+                <div class="form-group mb-3">
+                    <label for="bhk">Enter BHK (Bedrooms)</label>
+                    <input type="number" class="form-control" id="bhk" name="bhk" placeholder="e.g. 2, 3" min="1" required>
+                </div>
+
+                <!-- Bathrooms Input -->
+                <div class="form-group mb-3">
+                    <label for="bath">Enter Number of Bathrooms</label>
+                    <input type="number" class="form-control" id="bath" name="bath" placeholder="e.g. 2, 3" min="1" required>
+                </div>
+
+                <!-- Total Sqft Input -->
+                <div class="form-group mb-3">
+                    <label for="total_sqft">Enter Total Square Feet</label>
+                    <input type="number" step="any" class="form-control" id="total_sqft" name="total_sqft" placeholder="e.g. 1200" min="1" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 mt-2">Predict Price</button>
+            </form>
+
+            {% if prediction %}
+                <div class="alert alert-success mt-4 text-center">
+                    <h4>Predicted Price: {{ prediction }}</h4>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <!-- 3D Graph Section -->
+    <!-- Enhanced 3D Graph Section -->
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="card chart-card shadow-lg border-0">
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">📊 Bangalore Housing 3D Visualizer</h5>
+                    <span class="badge bg-primary">Interactive 3D</span>
+                </div>
+                <div class="card-body bg-dark text-white p-2">
+                    <p class="text-muted small px-2 mb-1">
+                        💡 <i>Tip: Click and drag to rotate the 3D model. Hover over points to view Location and Price details.</i>
+                    </p>
+                    <div class="chart-container">
+                        {{ graph_html | safe }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript File Linking -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

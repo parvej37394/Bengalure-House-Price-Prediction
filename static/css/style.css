@@ -1,0 +1,81 @@
+/* General Body Layout */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+/* Container & Card Styling */
+.container {
+    max-width: 600px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Title Styling */
+.header-title h1 {
+    font-weight: 700;
+    color: #0d6efd;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+}
+
+/* Form Controls */
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #495057;
+}
+
+.form-control {
+    border-radius: 6px;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 5px rgba(13, 110, 253, 0.25);
+}
+
+/* Submit Button Styling */
+.btn-primary {
+    background-color: #0d6efd;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+}
+
+/* Prediction Output Box */
+.alert-success {
+    border-radius: 8px;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+    color: #0f5132;
+    padding: 15px;
+}
+/* 3D Chart Container Styling */
+.chart-card {
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #1e1e2f;
+}
+
+.chart-container {
+    border-radius: 8px;
+    overflow: hidden;
+    min-height: 500px;
+}
